@@ -29,7 +29,7 @@ class UsersController extends Controller
                 $data['avatar'] = $result['path'];
             } else {
                 //上传有错误  withErrors可以携带回错误信
-                return back()->withErrors(['用户头像图片上传格式只支持png, jpg, gif, jpeg这四种格式']);
+                return back()->withErrors(['上传头像必须是 jpeg, bmp, png, gif 格式的图片']);
             }
         }
         $user->update($data);
