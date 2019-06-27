@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-
+// 自动授权注册
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -23,8 +23,13 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // 自动授权注册
         $this->registerPolicies();
 
-        //
+        // 修改策略自动发现的逻辑
+        Gate::guessPolicyNamesUsing(function ($modelClass) {
+            // 动态返回模型对应的策略名称，如：// 'App\Model\User' => 'App\Policies\UserPolicy',
+            return 'App\Policies\\'.class_basename($modelClass).'Policy';
+        });
     }
 }
