@@ -11,7 +11,7 @@ class EventServiceProvider extends ServiceProvider
 {
     /**
      * The event listener mappings for the application.
-     *
+     * $listen 属性里看到注册了 Registered 事件的监听器
      * @var array
      */
     protected $listen = [
