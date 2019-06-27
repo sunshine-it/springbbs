@@ -32,7 +32,7 @@
           </div>
           <div class="form-group mb-4">
             <label for="" class="avatar-label">用户头像</label>
-            <input type="file" name="avatar" class="form-control-file">
+            <input type="file" name="avatar" class="form-control-file" accept="image/png,image/gif,image/jpeg,image/jpeg">
             @if($user->avatar)
               <br>
               <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200" />
