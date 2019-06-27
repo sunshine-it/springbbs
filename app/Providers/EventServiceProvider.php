@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
+// 事件注册控制器
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +17,11 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        // 事件
+        \Illuminate\Auth\Events\Verified::class => [
+            // 监听器
+            \App\Listeners\EmailVerified::class,
         ],
     ];
 
