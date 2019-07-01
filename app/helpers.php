@@ -1,4 +1,13 @@
 <?php
+
+if (! function_exists('make_excerpt')) {
+    function make_excerpt($value, $length = 200)
+    {
+        $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($value)));
+        return str_limit($excerpt, $length);
+    }
+}
+
 // Bootstrap 框架的 导航栏组件  hieu-le/active
 if (! function_exists('category_nav_active')) {
     function category_nav_active($category_id)
