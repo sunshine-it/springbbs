@@ -14,10 +14,13 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request, Topic $topic)
 	{
         // 方法 with() 提前加载了我们后面需要用到的关联属性 user 和 category，并做了缓存 | 数据已经被预加载并缓存
-		$topics = Topic::with('user', 'category')->paginate(30);
+        // $topics = Topic::with('user', 'category')->paginate(30);
+        // withOrder() 方法来自： springbbs/app/Models/Topic.php
+        // $request->order 是获取 URI http://larabbs.test/topics?order=recent 中的 order 参数
+		$topics = $topic->withOrder($request->order)->paginate(10);
 		return view('topics.index', compact('topics'));
 	}
 
