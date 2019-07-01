@@ -49,4 +49,7 @@ Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit'
 // // 处理 edit 页面提交的更改
 // Route::patch('/users/{user}', 'UsersController@update')->name('users.update');
 
+// 帖子
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+// 分类列表话题
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
