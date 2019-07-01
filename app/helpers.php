@@ -1,5 +1,6 @@
 <?php
 
+// 监听数据处理
 if (! function_exists('make_excerpt')) {
     function make_excerpt($value, $length = 200)
     {
