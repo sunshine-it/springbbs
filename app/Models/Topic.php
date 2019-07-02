@@ -12,6 +12,11 @@ class Topic extends Model
         'slug'
     ];
 
+    // 一篇帖子下有多条回复
+    public function replies() {
+        return $this->hasMany(Reply::class);
+    }
+
     // 一个话题属于一个分类
     public function category() {
         return $this->belongsTo(Category::class);
