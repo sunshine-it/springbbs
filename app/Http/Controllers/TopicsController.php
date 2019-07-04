@@ -79,6 +79,7 @@ class TopicsController extends Controller
 		$topic->delete();
         // 删除了这个回复之后，跳回相关联的话题之下，并带上闪存内容
         return redirect()->to($topic->link())->with('success', '删除成功！');
+        // return back()->withInput(['success' => '删除成功！']);
 	}
 
     // 图片上传
