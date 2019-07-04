@@ -1,5 +1,5 @@
 <?php
-// 配置 HTMLPurifier for Laravel 5
+// 配置 HTMLPurifier for Laravel 5 (处理 XSS 安全问题)
 return [
     'encoding'      => 'UTF-8',
     'finalize'      => true,
