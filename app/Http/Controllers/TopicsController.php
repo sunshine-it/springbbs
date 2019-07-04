@@ -54,8 +54,6 @@ class TopicsController extends Controller
         $topic->user_id = Auth::id();
         // 保存到数据库中
         $topic->save();
-		// $topic = Topic::create($request->all());
-        // return redirect()->route('topics.show', $topic->id)->with('success', '帖子创建成功！');
 		return redirect()->to($topic->link())->with('success', '帖子创建成功！');
 	}
 
@@ -72,8 +70,6 @@ class TopicsController extends Controller
         // 授权策略的调用
 		$this->authorize('update', $topic);
 		$topic->update($request->all());
-
-        // return redirect()->route('topics.show', $topic->id)->with('success', '更新成功！');
 		return redirect()->to($topic->link())->with('success', '更新成功！');
 	}
 
@@ -81,9 +77,8 @@ class TopicsController extends Controller
 	{
 		$this->authorize('destroy', $topic);
 		$topic->delete();
-
-        // return redirect()->route('topics.index')->with('success', '删除成功！');
-		return redirect()->to($topic->link())->with('success', '删除成功！');
+        // 删除了这个回复之后，跳回相关联的话题之下，并带上闪存内容
+        return redirect()->to($topic->link())->with('success', '删除成功！');
 	}
 
     // 图片上传
