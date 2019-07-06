@@ -4,7 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+// 调度器
 class Kernel extends ConsoleKernel
 {
     /**
@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
 
     /**
      * Define the application's command schedule.
-     *
+     * 注册调度任务
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        // 一小时执行一次『活跃用户』数据生成的命令
+        $schedule->command('springbbs:calculate-active-user')->hourly();
     }
 
     /**

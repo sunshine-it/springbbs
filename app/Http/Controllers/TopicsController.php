@@ -9,6 +9,7 @@ use App\Http\Requests\TopicRequest;
 use App\Models\Category;
 use Auth;
 use App\Handlers\ImageUploadHandler; // 图片上传
+use App\Models\User;
 // 帖子控制器
 class TopicsController extends Controller
 {
@@ -18,14 +19,16 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request, Topic $topic)
+	public function index(Request $request, Topic $topic, User $user)
 	{
         // 方法 with() 提前加载了我们后面需要用到的关联属性 user 和 category，并做了缓存 | 数据已经被预加载并缓存
         // $topics = Topic::with('user', 'category')->paginate(30);
         // withOrder() 方法来自： springbbs/app/Models/Topic.php
         // $request->order 是获取 URI http://larabbs.test/topics?order=recent 中的 order 参数
 		$topics = $topic->withOrder($request->order)->paginate(10);
-		return view('topics.index', compact('topics'));
+        $active_users = $user->getActiveUsers();
+        // dd($active_users);
+		return view('topics.index', compact('topics', 'active_users'));
 	}
 
     public function show(Request $request,Topic $topic)
