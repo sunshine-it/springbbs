@@ -9,7 +9,9 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'SpringBBS')</title>
+  <title>@yield('title', 'SpringBBS') - {{ setting('site_name', '学习与乐趣') }}</title>
+  <meta name="description" content="@yield('description', setting('seo_description', 'SpringBBS 社区。'))" />
+  <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'SpringBBS，学习与乐趣，社区。'))" />
 
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
