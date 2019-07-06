@@ -6,7 +6,7 @@ use App\Models\Reply;
 use App\Notifications\TopicReplied;
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
-// 帖子模型观察|监控器
+// 帖子回复模型观察|监控器
 class ReplyObserver
 {
     // 帖子回复成功之后

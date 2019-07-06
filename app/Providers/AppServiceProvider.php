@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+// 监控器
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,10 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
 	{
+        // 注册监控器
 		\App\Models\User::observe(\App\Observers\UserObserver::class);
 		\App\Models\Reply::observe(\App\Observers\ReplyObserver::class);
 		\App\Models\Topic::observe(\App\Observers\TopicObserver::class);
-
-        //
+        \App\Models\Link::observe(\App\Observers\LinkObserver::class);
     }
 }

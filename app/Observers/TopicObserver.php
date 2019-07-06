@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Topic;
-// 队列执行
+// 队列执行 帖子模型观察|监控器
 use App\Jobs\TranslateSlug;
 
 // creating, created, updating, updated, saving,
