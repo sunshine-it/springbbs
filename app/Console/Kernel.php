@@ -28,6 +28,8 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         // 一小时执行一次『活跃用户』数据生成的命令
         $schedule->command('springbbs:calculate-active-user')->hourly();
+        // 每日零时执行一次 用户最后登录时间 redis 缓存数据同步到项目数据中 的命令
+        $schedule->command('springbbs:sync-user-actived-at')->dailyAt('00:00');
     }
 
     /**
